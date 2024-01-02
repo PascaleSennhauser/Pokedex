@@ -11,6 +11,7 @@ async function loadPokemon() {
             allPokemons.push(currentPokemon);      
             renderPokemonInfo(i, currentPokemon);
             currentCardIndex++;
+            console.log(currentPokemon);
         }
 }
 
