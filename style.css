@@ -36,7 +36,7 @@ header {
     font-weight: bold;
 }
 
-form {
+.input-container {
     position: absolute;
     right: 30px;
     bottom: 30px;
@@ -49,7 +49,7 @@ label {
 input {
     border-radius: 10px;
     border: 1px solid black;
-    padding: 4px 8px;
+    padding: 4px 10px;
     width: 160px;
     margin-top: 6px;
     background-color: white;
@@ -75,6 +75,10 @@ input {
     border-radius: 40px;
     margin-right: 40px;
     margin-bottom: 20px;
+}
+
+.pokedex-small:hover {
+    cursor: pointer;
 }
 
 .grass {
@@ -103,6 +107,30 @@ input {
 
 .electric {
     background-color: rgb(238,213,53);
+}
+
+.ground {
+    background-color: rgb(171,152,65);
+}
+
+.fairy {
+    background-color: rgb(252,184,233);
+}
+
+.fighting {
+    background-color: rgb(213,103,34);
+}
+
+.psychic {
+    background-color: rgb(247,135,200);
+}
+
+.rock {
+    background-color: rgb(163,140,32);
+}
+
+.ghost {
+    background-color: rgb(123,98,163);
 }
 
 .name-number-container{
@@ -136,5 +164,43 @@ input {
     font-size: 12px;
     background-color: rgb(255, 255, 255, 0.3);
 }
+
+/* search */
+
+.no-search {
+    color: white;
+    margin-top: 40px;
+    font-size: 20px;
+}
+
+/* button load-more */
+
+.btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.btn-loadmore {
+    width: 150px;
+    height: 40px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(238,213,53);
+    border: 2px solid rgb(180,21,19);
+    color: rgb(180,21,19);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.btn-loadmore:hover {
+    cursor: pointer;
+}
+
 
 

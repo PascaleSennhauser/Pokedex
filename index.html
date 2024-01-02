@@ -16,16 +16,22 @@
             <img src="./img/pokeball.png" class="pokeball">
             <span class="title">Pokédex</span>
         </div>
-        <form>
+        <div class="input-container">
             <label>Who are you looking for:</label><br>
-            <input type="text" id="pokemonInput" placeholder="E.g. Pikachu">
-        </form>
+            <input type="text" id="pokemonInput" placeholder="E.g. Pikachu" onkeyup="filterNames()">
+        </div>
     </header>
 
     <!-- body-part -->
 
     <div id="bodyPart">
 
+    </div>
+
+    <!-- button "load more" -->
+
+    <div class="btn-container">
+        <button id="btnLoadMore" class="btn-loadmore" onclick="loadMoreCards()">Load more</button>
     </div>
     
 </body>
