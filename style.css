@@ -5,6 +5,7 @@ body {
     padding-right: 20px;
     font-family: 'Open Sans', sans-serif;
     background-color: #3262AB;
+    font-size: 16px;
 }
 
 /* header */
@@ -205,6 +206,10 @@ input {
 
 /* pokédex big */
 
+.d-none {
+    display: none !important;
+}
+
 .pokedex-big {
     position: fixed;
     top: 0;
@@ -271,7 +276,6 @@ input {
     align-items: center;
     padding: 30px;
     padding-top: 60px;
-    background-color: rgb(155,204,80);
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
 }
@@ -316,5 +320,78 @@ input {
     background-color: white;
     z-index: 99;
     margin-top: -50px;
+    font-size: 14px;
+}
+
+.header-bottom {
+    width: 100%;
+    padding-top: 44px;
+    padding-bottom: 4px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 2px solid rgb(190, 189, 189);
+    box-shadow: 0 0 4px 0 rgb(190, 189, 189);
+}
+
+.header-bottom span:hover {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.info-bottom {
+    padding: 20px;
+}
+
+.description {
+    height: 250px;
+    overflow-y: auto;
+}
+
+.description h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.evolution-chain-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.evolution-img {
+    height: 150px;
+    margin: 20px;
+}
+
+.w-h-center {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.weight-height {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(190, 189, 189, 0.3);
+    border: 2px solid rgb(190, 189, 189);
+    border-radius: 20px;
+    height: 80px;
+    width: 300px;
+    padding-left: 40px;
+    padding-right: 40px;;
+}
+
+.w-h-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.w-h-title {
+    font-weight: bold;
+    margin-bottom: 8px;
 }
 
