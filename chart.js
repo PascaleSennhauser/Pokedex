@@ -6,7 +6,7 @@ function renderchart() {
       data: {
         labels: namesStats,
         datasets: [{
-          label: 'base_stat',
+          label: 'base_stats',
           data: numbersStats,
           borderWidth: 1
         }]
