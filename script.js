@@ -3,6 +3,8 @@ let cards = 10;
 let MAX_CARDS = 100;
 let allPokemons = [];
 let currentPokemon;
+let numbersStats = [];
+let namesStats = [];
 
 
 async function loadPokemon() {
@@ -366,5 +368,19 @@ function showMoves(i) {
 
 function showBaseState(i) {
     let infoBottom = document.getElementById(`infoBottom${i}`);
-    infoBottom.innerHTML = '';
+    infoBottom.innerHTML = `<canvas class="base-state-container" id="myChart"></section>`;
+    let myChart = document.getElementById('myChart');
+    let stats = currentPokemon['stats'];
+    console.log(stats);
+    numbersStats = [];
+    namesStats = [];
+    for (let j = 0; j < stats.length; j++) {
+        let number = stats[j]['base_stat'];
+        let name = stats[j]['stat']['name'];
+        console.log(number);
+        console.log(name);
+        numbersStats.push(number);
+        namesStats.push(name);
+    }
+    renderchart();
 }
