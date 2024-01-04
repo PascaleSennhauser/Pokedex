@@ -237,16 +237,24 @@ input {
     top: 0;
     left: 0;
     right: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding-left: 30px;
-    padding-right: 30px;;
+    padding-right: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .number-big {
     font-weight: bold;
     font-size: 20px;
+    margin-top: -24px;
+}
+
+.next-prev-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 20px;
 }
 
 .btn-next-prev {
@@ -308,6 +316,7 @@ input {
 
 .top-img {
     height: 200px;
+    max-width: 300px;
     margin-bottom: -40px;
 }
 
@@ -336,8 +345,10 @@ input {
 
 .header-bottom span:hover {
     cursor: pointer;
-    font-weight: bold;
+    text-decoration: underline;
 }
+
+/* about-part */
 
 .info-bottom {
     padding: 20px;
@@ -362,7 +373,8 @@ input {
 
 .evolution-img {
     height: 150px;
-    margin: 20px;
+    margin-bottom: 40px;
+    margin-top: 4px;
 }
 
 .w-h-center {
@@ -379,9 +391,7 @@ input {
     border: 2px solid rgb(190, 189, 189);
     border-radius: 20px;
     height: 80px;
-    width: 300px;
-    padding-left: 40px;
-    padding-right: 40px;;
+    width: 250px;
 }
 
 .w-h-container {
@@ -390,8 +400,36 @@ input {
     align-items: center;
 }
 
+.w-h-container:first-child {
+    margin-left: 30px;
+}
+
+.w-h-container:nth-child(2) {
+    margin-right: 30px;
+}
+
 .w-h-title {
     font-weight: bold;
     margin-bottom: 8px;
+}
+
+/* base state-part */
+
+
+/* moves-part */
+
+.move-container {
+    overflow-y: auto;
+    height: 380px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.move {
+    margin: 10px 4px;
+    background-color: rgba(190, 189, 189, 0.3);
+    padding: 4px 10px;
+    border-radius: 40px;
 }
 

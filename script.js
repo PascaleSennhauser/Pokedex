@@ -3,7 +3,6 @@ let cards = 10;
 let MAX_CARDS = 100;
 let allPokemons = [];
 let currentPokemon;
-let evolutionImgArray = [];
 
 
 async function loadPokemon() {
@@ -12,7 +11,7 @@ async function loadPokemon() {
         let response = await fetch(url);
         currentPokemon = await response.json();
         allPokemons.push(currentPokemon);
-        renderPokemonInfo(i, currentPokemon);
+        renderPokemonInfo(i);
         currentCardIndex++;
         console.log(currentPokemon);
     }
@@ -31,7 +30,7 @@ function loadMoreCards() {
 }
 
 
-function renderPokemonInfo(i, currentPokemon) {
+function renderPokemonInfo(i) {
     document.getElementById('bodyPart').innerHTML += /*html*/`
     <div class="pokedex-small" id="pokedexSmall${i}" onclick="pokedexBig(${i})">
         <div class="name-number-container">
@@ -43,13 +42,13 @@ function renderPokemonInfo(i, currentPokemon) {
         </div>
     </div>
     `;
-    renderTypesSmall(i, currentPokemon);
-    backgroundColor(i, currentPokemon);
+    renderTypesSmall(i);
+    backgroundColor(i);
     console.log(i);
 }
 
 
-function renderTypesSmall(i, currentPokemon) {
+function renderTypesSmall(i) {
     let types = currentPokemon['types'];
     for (let j = 0; j < types.length; j++) {
         let type = types[j];
@@ -60,7 +59,7 @@ function renderTypesSmall(i, currentPokemon) {
 }
 
 
-function backgroundColor(i, currentPokemon) {
+function backgroundColor(i) {
     let firstType = currentPokemon['types'][0]['type']['name'];
     let currentPokedex = document.getElementById(`pokedexSmall${i}`);
     if (firstType == 'grass') {
@@ -111,7 +110,9 @@ function filterNames() {
 
     if (search == '') {
         for (let i = 0; i < allPokemons.length; i++) {
-            renderPokemonInfo(i, allPokemons[i]);
+            currentPokemon = allPokemons[i];
+            let index = i+1;
+            renderPokemonInfo(index);
         }
         if (cards == MAX_CARDS) {
             document.getElementById('btnLoadMore').style.display = 'none';
@@ -121,7 +122,9 @@ function filterNames() {
     } else {
         for (let i = 0; i < allPokemons.length; i++) {
             if (allPokemons[i]['name'].toLowerCase().includes(search)) {
-                renderPokemonInfo(i, allPokemons[i]);
+                currentPokemon = allPokemons[i];
+                let index = i+1;
+                renderPokemonInfo(index);
                 foundPokemonIndex = i;
             }
         }
@@ -140,13 +143,15 @@ function pokedexBig(i) {
     pokedexBig.innerHTML = /*html*/`
         <div class="pokedex-card" onclick="doNotClose(event)">
             <div class="card-header">
-                <div class="btn-next-prev">
-                    <img src="./img/chevron-left-solid.svg">
+                <div class="next-prev-container" id="nextPrevContainer">
+                    <div class="btn-next-prev" id="btnPrev" onclick="prevPokedex(${i})">
+                        <img src="./img/chevron-left-solid.svg">
+                    </div>
+                    <div class="btn-next-prev" id="btnNext" onclick="nextPokedex(${i})">
+                        <img src="./img/chevron-right-solid.svg">
+                    </div>
                 </div>
                 <span class="number-big">Nr. ${formatNumber(currentPokemon['id'])}</span>
-                <div class="btn-next-prev">
-                    <img src="./img/chevron-right-solid.svg">
-                </div>
             </div>
             <div class="top" id="top${i}">
                 <div class="top-info">
@@ -159,40 +164,59 @@ function pokedexBig(i) {
 
             <div class="bottom">
                 <div class="header-bottom">
-                    <span>About</span>
-                    <span>Base State</span>
-                    <span>Moves</span>
+                    <span onclick="showAbout(${i})">About</span>
+                    <span onclick="showBaseState(${i})">Base State</span>
+                    <span onclick="showMoves(${i})">Moves</span>
                 </div>
-                <section class="info-bottom">
-                    <div class="description">
-                        <h2>Evolution</h2>
-                        <div class="evolution-chain-container" id="evolutionChain${i}">
-                        </div>
-                    </div>
-                    <div class="w-h-center">
-                        <div class="weight-height">
-                            <div class="w-h-container">
-                                <span class="w-h-title">Weigth</span>
-                                <span>2.5 lbs (10 kg)</span>
-                            </div>
-                            <div class="w-h-container">
-                                <span class="w-h-title">Height</span>
-                                <span>2.5 inch (10cm)</span>
-                            </div>
-                        </div>
-                    </div>
+                <section class="info-bottom" id="infoBottom${i}">
                 </section>
             </div>
         </div>
     `;
-
-    renderTypesBig(i, currentPokemon);
-    backgroundColorBig(i, currentPokemon);
-    loadEvolutionChain(i);
+    showAbout(i);
+    updateButtonVisibility(i);
+    renderTypesBig(i);
+    backgroundColorBig(i);
 }
 
 
-function renderTypesBig(i, currentPokemon) {
+function nextPokedex(i) {
+    let index = i+1;
+    pokedexBig(index);
+}
+
+
+function prevPokedex(i) {
+    let index = i-1;
+    pokedexBig(index);
+
+}
+
+
+function updateButtonVisibility(i) {
+    const btnPrev = document.getElementById('btnPrev');
+    const btnNext = document.getElementById('btnNext');
+    const nextPrevContainer = document.getElementById('nextPrevContainer');
+    btnPrev.classList.remove('d-none');
+    btnNext.classList.remove('d-none');
+    nextPrevContainer.style.justifyContent = 'space-between';
+    if (i <= 1) {
+        btnPrev.classList.add('d-none');
+        nextPrevContainer.style.justifyContent = 'flex-end';
+    }
+    if (i == (currentCardIndex-1)) {
+        btnNext.classList.add('d-none');
+    }
+}
+
+
+function formatNumberWeightHeight(num) {
+    let formattedNumber = num / 10;
+    return formattedNumber;
+}
+
+
+function renderTypesBig(i) {
     let types = currentPokemon['types'];
     for (let j = 0; j < types.length; j++) {
         let type = types[j];
@@ -203,7 +227,7 @@ function renderTypesBig(i, currentPokemon) {
 }
 
 
-function backgroundColorBig(i, currentPokemon) {
+function backgroundColorBig(i) {
     let firstType = currentPokemon['types'][0]['type']['name'];
     let currentPokedex = document.getElementById(`top${i}`);
     if (firstType == 'grass') {
@@ -259,36 +283,88 @@ async function loadEvolutionChain(i) {
 
 
 async function getEvolution(evolutionChain, i) {
-    evolutionImgArray = [];
-    let evolutionOne = evolutionChain['chain']['species']['name'];
-    console.log(evolutionOne);
-    await getImg(evolutionOne);
-    let evolutionTwo = evolutionChain['chain']['evolves_to']['0']['species']['name'];
-    console.log(evolutionTwo);
-    await getImg(evolutionTwo);
-    let evolutionThree = evolutionChain['chain']['evolves_to']['0']['evolves_to']['0']['species']['name'];
-    console.log(evolutionThree);
-    await getImg(evolutionThree);
+    try {
+        let evolutionOne = evolutionChain['chain']['species']['name'];
+        console.log(evolutionOne);
+        await getImg(evolutionOne, i);
+    } catch (error) {
 
-    renderEvolution(i);
+    }
+
+    try {
+        let evolutionTwo = evolutionChain['chain']['evolves_to']['0']['species']['name'];
+        console.log(evolutionTwo);
+        await getImg(evolutionTwo, i);
+    } catch (error) {
+
+    }
+
+    try {
+        let evolutionThree = evolutionChain['chain']['evolves_to']['0']['evolves_to']['0']['species']['name'];
+        console.log(evolutionThree);
+        await getImg(evolutionThree, i);
+    } catch (error) {
+
+    }
 }
 
 
-async function getImg(name) {
+async function getImg(name, i) {
     let url = `https://pokeapi.co/api/v2/pokemon/${name}/`;
     let response = await fetch(url);
     currentPokemon = await response.json();
     let img = currentPokemon['sprites']['other']['dream_world']['front_default'];
-    evolutionImgArray.push(img);
-    return img;
+    renderEvolution(i, img, name);
 }
 
 
-function renderEvolution(i) {
-    for (let j = 0; j < evolutionImgArray.length; j++) {
-        const img = evolutionImgArray[j];
+function renderEvolution(i, img, name) {
         document.getElementById(`evolutionChain${i}`).innerHTML += `
+            <span class="evolution-name"><b>${name}</b></span>
             <img src=${img} class="evolution-img">
         `;
+}
+
+
+function showAbout(i) {
+    let infoBottom = document.getElementById(`infoBottom${i}`);
+    infoBottom.innerHTML = /*html*/`
+        <div class="description">
+            <h2>Evolution</h2>
+            <div class="evolution-chain-container" id="evolutionChain${i}">
+        </div>
+        </div>
+            <div class="w-h-center">
+            <div class="weight-height">
+                <div class="w-h-container">
+                    <span class="w-h-title">Weigth</span>
+                    <span>${formatNumberWeightHeight(currentPokemon['weight'])} kg</span>
+                </div>
+                <div class="w-h-container">
+                    <span class="w-h-title">Height</span>
+                    <span>${formatNumberWeightHeight(currentPokemon['height'])} m</span>
+                </div>
+            </div>
+        </div>
+    `;
+    loadEvolutionChain(i);
+}
+
+function showMoves(i) {
+    let infoBottom = document.getElementById(`infoBottom${i}`);
+    infoBottom.innerHTML = `<section class="move-container" id="moveContainer"></section>`;
+    let moveContainer = document.getElementById('moveContainer');
+    let moves = currentPokemon['moves'];
+    console.log(moves);
+    for (let j = 0; j < moves.length; j++) {
+        moveContainer.innerHTML += /*html*/`
+        <div class="move">${moves[j]['move']['name']}</div>
+    `;
     }
+}
+
+
+function showBaseState(i) {
+    let infoBottom = document.getElementById(`infoBottom${i}`);
+    infoBottom.innerHTML = '';
 }
