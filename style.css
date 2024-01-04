@@ -332,6 +332,8 @@ input {
     font-size: 14px;
 }
 
+/* header-bottom */
+
 .header-bottom {
     width: 100%;
     padding-top: 44px;
@@ -345,6 +347,10 @@ input {
 
 .header-bottom span:hover {
     cursor: pointer;
+    text-decoration: underline;
+}
+
+.text-underline {
     text-decoration: underline;
 }
 

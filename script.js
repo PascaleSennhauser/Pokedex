@@ -166,9 +166,9 @@ function pokedexBig(i) {
 
             <div class="bottom">
                 <div class="header-bottom">
-                    <span onclick="showAbout(${i})">About</span>
-                    <span onclick="showBaseState(${i})">Base State</span>
-                    <span onclick="showMoves(${i})">Moves</span>
+                    <span id="about" onclick="showAbout(${i})">About</span>
+                    <span id="baseStats" onclick="showBaseStats(${i})">Base Stats</span>
+                    <span id="moves" onclick="showMoves(${i})">Moves</span>
                 </div>
                 <section class="info-bottom" id="infoBottom${i}">
                 </section>
@@ -350,6 +350,9 @@ function showAbout(i) {
         </div>
     `;
     loadEvolutionChain(i);
+    document.getElementById('about').classList.add('text-underline');
+    document.getElementById('baseStats').classList.remove('text-underline');
+    document.getElementById('moves').classList.remove('text-underline');
 }
 
 function showMoves(i) {
@@ -363,13 +366,17 @@ function showMoves(i) {
         <div class="move">${moves[j]['move']['name']}</div>
     `;
     }
+
+    document.getElementById('about').classList.remove('text-underline');
+    document.getElementById('baseStats').classList.remove('text-underline');
+    document.getElementById('moves').classList.add('text-underline');
+
 }
 
 
-function showBaseState(i) {
+function showBaseStats(i) {
     let infoBottom = document.getElementById(`infoBottom${i}`);
     infoBottom.innerHTML = `<canvas class="base-state-container" id="myChart"></section>`;
-    let myChart = document.getElementById('myChart');
     let stats = currentPokemon['stats'];
     console.log(stats);
     numbersStats = [];
@@ -383,4 +390,8 @@ function showBaseState(i) {
         namesStats.push(name);
     }
     renderchart();
+    document.getElementById('about').classList.remove('text-underline');
+    document.getElementById('baseStats').classList.add('text-underline');
+    document.getElementById('moves').classList.remove('text-underline');
+
 }
