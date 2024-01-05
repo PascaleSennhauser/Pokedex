@@ -286,14 +286,15 @@ input {
     height: 200px;
     display: flex;
     align-items: center;
-    padding: 30px;
     padding-top: 60px;
+    padding-bottom: 30px;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
 }
 
 .top-info {
     width: 200px;
+    margin-left: 30px;
 }
 
 .number-name-container {
@@ -319,6 +320,7 @@ input {
     height: 200px;
     max-width: 300px;
     margin-bottom: -30px;
+    margin-right: 30px;
 }
 
 /* bottom */
@@ -420,6 +422,12 @@ input {
 }
 
 /* base state-part */
+
+.charts-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 
 .base-state-container {
     margin-top: 60px;

@@ -289,7 +289,9 @@ function forLoopDifferentMoves(moveContainer, moves) {
 
 function showBaseStats(i) {
     let infoBottom = document.getElementById(`infoBottom${i}`);
-    infoBottom.innerHTML = `<canvas class="base-state-container" id="myChart"></section>`;
+    infoBottom.innerHTML = `<div class="charts-container" id="chartsContainer"></div>`
+    let chartsContainer = document.getElementById('chartsContainer');
+    chartsContainer.innerHTML = `<canvas class="base-state-container" id="myChart"></section>`;
     let stats = currentPokemon['stats'];
     numbersStats = [];
     namesStats = [];
