@@ -184,9 +184,11 @@ function closePokedexBig() {
     pokedexBig.classList.add('d-none');
 }
 
+
 function doNotClose(event) {
     event.stopPropagation();
 }
+
 
 async function loadEvolutionChain(i) {
     let url = `https://pokeapi.co/api/v2/pokemon-species/${i}/`;

@@ -1,0 +1,153 @@
+@media (max-width: 1000px) {
+    header {
+        display: flex;
+        justify-content: space-between;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+@media (max-width: 760px) {
+    body {
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 14px;
+    }
+
+    /* header */
+
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header-container {
+        margin-top: 10px;
+    }
+
+    .pokeball {
+        height: 50px;
+    }
+
+    .title {
+        font-size: 40px;
+    }
+
+    .input-container {
+        position: unset;
+        margin-bottom: 20px;
+    }
+
+    /* body-part */
+
+    #body-part {
+        display: flex;
+        flex-wrap: unset;
+        justify-content: center;
+    }
+
+    /* pokedex-card-small */
+
+    .pokedex-small {
+        height: 150px;
+        width: 100px;
+        padding: 10px;
+        margin-bottom: 10px;
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+
+    .name-number-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .pokemon-name-small {
+        font-size: 14px;
+    }
+
+    .number-small {
+        font-size: 12px;
+    }
+
+    .img-small {
+        max-height: 60px;
+    }
+
+    .btn-type {
+        font-size: 10px;
+        padding: 3px 6px;
+    }
+
+    /* button load-more */
+
+    .btn-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .btn-loadmore {
+        font-size: 16px;
+        width: 120px;
+    }
+
+    /* search */
+
+    .no-search {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    /* pokédex big */
+
+    .pokdedex-card {
+        width: 100%;
+        border-radius: unset;
+    }
+
+    /* card-header */
+
+    .card-header {
+        height: 40px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .number-big {
+        font-size: 16px;
+    }
+
+    .next-prev-container {
+        padding-top: 10px;
+    }
+
+
+    /* top */
+
+    .top {
+        height: 150px;
+        padding: 16px;
+        padding-top: 40px;
+    }
+
+    .top-info {
+        width: 100px;
+    }
+
+    .name-big {
+        font-size: 16px;
+    }
+
+    .type-container {
+        margin-top: 8px;
+    }
+
+    .top-img {
+        height: 120px;
+        max-width: 120px;
+    }
+
+
+
+}

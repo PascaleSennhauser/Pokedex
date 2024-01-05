@@ -25,11 +25,14 @@ function renderPokedexBigTemplate(i) {
                         <img src="./img/chevron-right-solid.svg">
                     </div>
                 </div>
-                <span class="number-big">Nr. ${formatNumber(currentPokemon['id'])}</span>
+                <img src="./img/circle-xmark-regular.svg" class="close-btn" onclick="closePokedexBig()">
             </div>
             <div class="top" id="top${i}">
                 <div class="top-info">
-                    <span class="name-big">${currentPokemon['name']}</span>
+                    <div class="number-name-container">
+                        <span class="number-big">Nr. ${formatNumber(currentPokemon['id'])}</span>
+                        <span class="name-big">${currentPokemon['name']}</span>
+                    </div>
                     <div class="type-container" id="typeContainer${i}">
                     </div>
                 </div>
