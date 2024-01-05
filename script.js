@@ -8,6 +8,16 @@ let namesStats = [];
 
 
 async function loadPokemon() {
+    document.getElementById('btnLoadMore').style.display = 'none';
+    try {
+        await forLooploadCards();
+    } catch (error) {
+    }
+    document.getElementById('btnLoadMore').style.display = 'unset';
+}
+
+
+async function forLooploadCards() {
     for (let i = currentCardIndex; i <= cards; i++) {
         let url = `https://pokeapi.co/api/v2/pokemon/${i}/`;
         let response = await fetch(url);
@@ -202,9 +212,9 @@ async function loadEvolutionChain(i) {
 
 
 async function getEvolution(evolutionChain, i) {
-    tryAndCatchEvolutionOne(evolutionChain, i);
-    tryAndCatchEvolutionTwo(evolutionChain, i);
-    tryAndCatchEvolutionThree(evolutionChain, i);
+    await tryAndCatchEvolutionOne(evolutionChain, i);
+    await tryAndCatchEvolutionTwo(evolutionChain, i);
+    await tryAndCatchEvolutionThree(evolutionChain, i);
 }
 
 
@@ -244,11 +254,11 @@ async function getImg(name, i) {
     let response = await fetch(url);
     currentPokemon = await response.json();
     let img = currentPokemon['sprites']['other']['dream_world']['front_default'];
-    renderEvolution(i, img, name);
+    await renderEvolution(i, img, name);
 }
 
 
-function renderEvolution(i, img, name) {
+async function renderEvolution(i, img, name) {
         document.getElementById(`evolutionChain${i}`).innerHTML += `
             <span class="evolution-name"><b>${name}</b></span>
             <img src=${img} class="evolution-img">
