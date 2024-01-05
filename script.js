@@ -13,7 +13,9 @@ async function loadPokemon() {
         await forLooploadCards();
     } catch (error) {
     }
-    document.getElementById('btnLoadMore').style.display = 'unset';
+    if (cards < MAX_CARDS) {
+        document.getElementById('btnLoadMore').style.display = 'unset';
+    }
 }
 
 
@@ -34,7 +36,6 @@ function loadMoreCards() {
     if (cards >= MAX_CARDS) {
         cards = MAX_CARDS;
         loadPokemon();
-        document.getElementById('btnLoadMore').style.display = 'none';
     } else {
         loadPokemon();
     }
@@ -110,10 +111,10 @@ function activeSearchInput(search, foundPokemonIndex) {
             renderPokemonInfo(index);
             foundPokemonIndex = i;
         }
-        }
-        if (foundPokemonIndex == -1) {
-            bodyPart.innerHTML = `<span class="no-search"><b>Es git kein Pokémon mit diesem/n Buchstabe/n...</b></span>`;
-        }
+    }
+    if (foundPokemonIndex == -1) {
+        bodyPart.innerHTML = `<span class="no-search"><b>Es git kein Pokémon mit diesem/n Buchstabe/n...</b></span>`;
+    }
     document.getElementById('btnLoadMore').style.display = 'none';
 }
 
