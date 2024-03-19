@@ -7,6 +7,9 @@ let numbersStats = [];
 let namesStats = [];
 
 
+/**
+ * This async function loads the pokemon from the pokemon-API.
+ */
 async function loadPokemon() {
     document.getElementById('btnLoadMore').style.display = 'none';
     try {
@@ -19,6 +22,9 @@ async function loadPokemon() {
 }
 
 
+/**
+ * This function loads fetches the API and renders the cards.
+ */
 async function forLooploadCards() {
     for (let i = currentCardIndex; i <= cards; i++) {
         let url = `https://pokeapi.co/api/v2/pokemon/${i}/`;
@@ -31,6 +37,9 @@ async function forLooploadCards() {
 }
 
 
+/**
+ * This function loads 10 more cards.
+ */
 function loadMoreCards() {
     cards += 10;
     if (cards >= MAX_CARDS) {
@@ -42,6 +51,10 @@ function loadMoreCards() {
 }
 
 
+/**
+ * This runction renders a small pokemon-card.
+ * @param {Number} i - The index of the card.
+ */
 function renderPokemonInfo(i) {
     document.getElementById('bodyPart').innerHTML += renderPokemonInfoTemplate(i);
     renderTypesSmall(i);
@@ -49,6 +62,10 @@ function renderPokemonInfo(i) {
 }
 
 
+/**
+ * This function renders the types of the pokemon in the pokemon-card.
+ * @param {Number} i - The index of the card.
+ */
 function renderTypesSmall(i) {
     let types = currentPokemon['types'];
     for (let j = 0; j < types.length; j++) {
@@ -60,6 +77,10 @@ function renderTypesSmall(i) {
 }
 
 
+/**
+ * This function renders the background color according to the type of the pokemon.
+ * @param {Number} i - The index of the card.
+ */
 function backgroundColor(i) {
     let firstType = currentPokemon['types'][0]['type']['name'];
     let currentPokedex = document.getElementById(`pokedexSmall${i}`);
@@ -67,6 +88,11 @@ function backgroundColor(i) {
 }
 
 
+/**
+ * This function formats the number to four digits.
+ * @param {Number} num - The number of the pokemon.
+ * @returns The formatted number to four digits.
+ */
 function formatNumber(num) {
     let formattedNumber = num.toString();
     while (formattedNumber.length < 4) {
@@ -76,6 +102,9 @@ function formatNumber(num) {
 }
 
 
+/**
+ * This function filters the pokemons from the search-input in the input-field.
+ */
 function filterNames() {
     let search = document.getElementById('pokemonInput').value.toLowerCase();
     let bodyPart = document.getElementById('bodyPart');
@@ -89,6 +118,9 @@ function filterNames() {
 }
 
 
+/**
+ * This function is invoked, when the search input is empty.
+ */
 function emptySearchInput() {
     for (let i = 0; i < allPokemons.length; i++) {
         currentPokemon = allPokemons[i];
@@ -103,6 +135,11 @@ function emptySearchInput() {
 }
 
 
+/**
+ * This function is invoked, when the search input is active.
+ * @param {String} search - The value of the search-input.
+ * @param {Number} foundPokemonIndex - The index of the found pokemons, currently -1.
+ */
 function activeSearchInput(search, foundPokemonIndex) {
     for (let i = 0; i < allPokemons.length; i++) {
         if (allPokemons[i]['name'].toLowerCase().includes(search)) {
@@ -119,6 +156,10 @@ function activeSearchInput(search, foundPokemonIndex) {
 }
 
 
+/**
+ * This function shows the pokemon-card in big as a popup.
+ * @param {Number} i - The index of the pokemon-card. 
+ */
 function pokedexBig(i) {
     currentPokemon = allPokemons[i-1];
     let pokedexBig = document.getElementById('pokedexBig');
@@ -131,12 +172,20 @@ function pokedexBig(i) {
 }
 
 
+/**
+ * This function shows the next pokemon, when you click on the specific sign.
+ * @param {Number} i - The index of the current pokemon-card.
+ */
 function nextPokedex(i) {
     let index = i+1;
     pokedexBig(index);
 }
 
 
+/**
+ * This function shows the previous pokemon, when you click on the specific sign.
+ * @param {Number} i - The index of the current pokemon-card. 
+ */
 function prevPokedex(i) {
     let index = i-1;
     pokedexBig(index);
@@ -144,6 +193,10 @@ function prevPokedex(i) {
 }
 
 
+/**
+ * This function updates the visibility of the next and previous button, if it's the first or last pokemon-card.
+ * @param {Number} i - The index of the pokemon-card.
+ */
 function updateButtonVisibility(i) {
     getButtonAndContainerVariable();
     btnPrev.classList.remove('d-none');
@@ -159,6 +212,9 @@ function updateButtonVisibility(i) {
 }
 
 
+/**
+ * This function gets all the html-elements of the next and previous button, as well as the nextPrevContainer.
+ */
 function getButtonAndContainerVariable() {
     const btnPrev = document.getElementById('btnPrev');
     const btnNext = document.getElementById('btnNext');
@@ -166,6 +222,10 @@ function getButtonAndContainerVariable() {
 }
 
 
+/**
+ * This function renders the types of the pokemon in the pokemon-popup-card.
+ * @param {Number} i - The index of the pokemon.
+ */
 function renderTypesBig(i) {
     let types = currentPokemon['types'];
     for (let j = 0; j < types.length; j++) {
@@ -177,6 +237,10 @@ function renderTypesBig(i) {
 }
 
 
+/**
+ * This function renders the background color of the pokemon-popup-card according to the types.
+ * @param {Number} i - The index of the pokemon.
+ */
 function backgroundColorBig(i) {
     let firstType = currentPokemon['types'][0]['type']['name'];
     let currentPokedex = document.getElementById(`top${i}`);
@@ -184,23 +248,39 @@ function backgroundColorBig(i) {
 }
 
 
+/**
+ * This function formats the numbers of the weight and height in the pokedex-popup-card.
+ * @param {Number} num - The weigth or height. 
+ * @returns The formatted weigth or height.
+ */
 function formatNumberWeightHeight(num) {
     let formattedNumber = num / 10;
     return formattedNumber;
 }
 
 
+/**
+ * This function closes the pokedex-popup-card.
+ */
 function closePokedexBig() {
     let pokedexBig = document.getElementById('pokedexBig');
     pokedexBig.classList.add('d-none');
 }
 
 
+/**
+ * This function stops the closing-event on the popup-card, so you can close the popup-card by clicking next to the card.
+ * @param {Event} event - The event object.
+ */
 function doNotClose(event) {
     event.stopPropagation();
 }
 
 
+/**
+ * This function loads the evolution chain of a pokeomn.
+ * @param {Number} i - The number of the pokemon.
+ */
 async function loadEvolutionChain(i) {
     let url = `https://pokeapi.co/api/v2/pokemon-species/${i}/`;
     let response = await fetch(url);
@@ -212,6 +292,11 @@ async function loadEvolutionChain(i) {
 }
 
 
+/**
+ * This function loads each evolution.
+ * @param {Object} evolutionChain - The response with the information of the evolution from the API
+ * @param {Number} i - The index of the pokemon.
+ */
 async function getEvolution(evolutionChain, i) {
     await tryAndCatchEvolutionOne(evolutionChain, i);
     await tryAndCatchEvolutionTwo(evolutionChain, i);
@@ -219,6 +304,11 @@ async function getEvolution(evolutionChain, i) {
 }
 
 
+/**
+ * This function loads the first evolution.
+ * @param {Object} evolutionChain - The response with the information of the evolution from the API.
+ * @param {Number} i - The index of the pokemon.
+ */
 async function tryAndCatchEvolutionOne(evolutionChain, i) {
     try {
         let evolutionOne = evolutionChain['chain']['species']['name'];
@@ -229,6 +319,11 @@ async function tryAndCatchEvolutionOne(evolutionChain, i) {
 }
 
 
+/**
+ * This function loads the second evolution.
+ * @param {Object} evolutionChain - The response with the information of the evolution from the API.
+ * @param {Number} i - The index of the pokemon.
+ */
 async function tryAndCatchEvolutionTwo(evolutionChain, i) {
     try {
         let evolutionTwo = evolutionChain['chain']['evolves_to']['0']['species']['name'];
@@ -239,6 +334,11 @@ async function tryAndCatchEvolutionTwo(evolutionChain, i) {
 }
 
 
+/**
+ * This function loads the third evolution.
+ * @param {Object} evolutionChain - The response with the information of the evolution from the API.
+ * @param {Number} i - The index of the pokemon.
+ */
 async function tryAndCatchEvolutionThree(evolutionChain, i) {
     try {
         let evolutionThree = evolutionChain['chain']['evolves_to']['0']['evolves_to']['0']['species']['name'];
@@ -250,6 +350,11 @@ async function tryAndCatchEvolutionThree(evolutionChain, i) {
 }
 
 
+/**
+ * This function gets the image of the evolution.
+ * @param {String} name - The name of the evolution.
+ * @param {Number} i - The index of the pokemon.
+ */
 async function getImg(name, i) {
     let url = `https://pokeapi.co/api/v2/pokemon/${name}/`;
     let response = await fetch(url);
@@ -259,6 +364,12 @@ async function getImg(name, i) {
 }
 
 
+/**
+ * This function renders the different evolutions.
+ * @param {Number} i - The index of the pokemon.
+ * @param {String} img - The image-source of the evolution.
+ * @param {String} name - The name of the evolution.
+ */
 async function renderEvolution(i, img, name) {
         document.getElementById(`evolutionChain${i}`).innerHTML += `
             <span class="evolution-name"><b>${name}</b></span>
@@ -267,6 +378,10 @@ async function renderEvolution(i, img, name) {
 }
 
 
+/**
+ * This function shows the about part in the popup-card.
+ * @param {Number} i - The index of the pokemon. 
+ */
 function showAbout(i) {
     let infoBottom = document.getElementById(`infoBottom${i}`);
     infoBottom.innerHTML = renderShowAboutTemplate(i);
@@ -277,6 +392,10 @@ function showAbout(i) {
 }
 
 
+/**
+ * This function shows the moves part  in the popup-card.
+ * @param {Number} i - The index of the pokemon. 
+ */
 function showMoves(i) {
     let infoBottom = document.getElementById(`infoBottom${i}`);
     infoBottom.innerHTML = `<section class="move-container" id="moveContainer"></section>`;
@@ -289,6 +408,11 @@ function showMoves(i) {
 }
 
 
+/**
+ * This function does the for-loop through the array of the different moves.
+ * @param {HTMLElement} moveContainer - The HTML-element for the moves.
+ * @param {Array} moves - The array with the different moves. 
+ */
 function forLoopDifferentMoves(moveContainer, moves) {
     for (let j = 0; j < moves.length; j++) {
         moveContainer.innerHTML += /*html*/`
@@ -298,6 +422,10 @@ function forLoopDifferentMoves(moveContainer, moves) {
 }
 
 
+/**
+ * This function shows the base stats.
+ * @param {Number} i - The index of the pokemon. 
+ */
 function showBaseStats(i) {
     let infoBottom = document.getElementById(`infoBottom${i}`);
     infoBottom.innerHTML = `<div class="charts-container" id="chartsContainer"></div>`
@@ -314,6 +442,10 @@ function showBaseStats(i) {
 }
 
 
+/**
+ * This function shows the different stats.
+ * @param {Array} stats - The array with the different stats. 
+ */
 function forLoopFillingArrayStats(stats) {
     for (let j = 0; j < stats.length; j++) {
         let number = stats[j]['base_stat'];

@@ -1,3 +1,6 @@
+/**
+ * This function renders the chart in the pokedex-big.
+ */
 function renderchart() {
     const ctx = document.getElementById('myChart');
 

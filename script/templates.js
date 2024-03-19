@@ -1,3 +1,8 @@
+/**
+ * This function renders the html-template of the small pokedex-card.
+ * @param {Number} i - The index of the pokemon.
+ * @returns The html-template of the pokedex-card gets returned.
+ */
 function renderPokemonInfoTemplate(i) {
     return /*html*/`
         <div class="pokedex-small" id="pokedexSmall${i}" onclick="pokedexBig(${i})">
@@ -13,6 +18,11 @@ function renderPokemonInfoTemplate(i) {
 }
 
 
+/**
+ * This function renders the html-template of the big pokedex-popup-card.
+ * @param {Number} i - The index of the pokemon.
+ * @returns The html-template of the pokedex-popup-card gets returned.
+ */
 function renderPokedexBigTemplate(i) {
     return /*html*/`
         <div class="pokedex-card" onclick="doNotClose(event)">
@@ -53,12 +63,17 @@ function renderPokedexBigTemplate(i) {
 }
 
 
+/**
+ * This function renders the html-template for the about-part in the pokedex-popup-card.
+ * @param {Number} i - The index of the pokemon.
+ * @returns The html-template for the about-part.
+ */
 function renderShowAboutTemplate(i) {
     return /*html*/`
         <div class="description">
             <h2>Evolution</h2>
             <div class="evolution-chain-container" id="evolutionChain${i}">
-        </div>
+            </div>
         </div>
             <div class="w-h-center">
             <div class="weight-height">
