@@ -15,33 +15,50 @@
 </head>
 <body onload="loadPokemon()">
 
-    <!-- header -->
-    <header>
-        <div class="header-container">
-            <img src="./img/pokeball.png" class="pokeball">
-            <span class="title">Pokédex</span>
+    <div class="min-height">
+
+        <!-- header -->
+        <header>
+            <div class="header-container">
+                <img src="./img/pokeball.png" class="pokeball">
+                <span class="title">Pokédex</span>
+            </div>
+            <div class="input-container">
+                <label>Who are you looking for:</label><br>
+                <input type="text" id="pokemonInput" placeholder="E.g. Pikachu" onkeyup="filterNames()">
+            </div>
+        </header>
+
+        <div class="body-part-container">
+
+            <!-- body-part -->
+
+            <div id="bodyPart">
+
+            </div>
+
+            <!-- button "load more" -->
+
+            <div class="btn-container">
+                <button id="btnLoadMore" class="btn-loadmore" onclick="loadMoreCards()">Load more</button>
+            </div>
+
+
+            <!-- Pokédex big -->
+
+            <div class="pokedex-big d-none" id="pokedexBig" onclick="closePokedexBig()">
+            </div>
+
         </div>
-        <div class="input-container">
-            <label>Who are you looking for:</label><br>
-            <input type="text" id="pokemonInput" placeholder="E.g. Pikachu" onkeyup="filterNames()">
-        </div>
-    </header>
 
-    <!-- body-part -->
+        <!-- footer -->
+        
+        <footer>
+            <a href="./impressum.html">Impressum</a>
+            <div>|</div>
+            <a href="./datenschutz.html">Privacy-Policy</a>
+        </footer>
 
-    <div id="bodyPart">
-
-    </div>
-
-    <!-- button "load more" -->
-
-    <div class="btn-container">
-        <button id="btnLoadMore" class="btn-loadmore" onclick="loadMoreCards()">Load more</button>
-    </div>
-
-    <!-- Pokédex big -->
-
-    <div class="pokedex-big d-none" id="pokedexBig" onclick="closePokedexBig()">
     </div>
     
 </body>
