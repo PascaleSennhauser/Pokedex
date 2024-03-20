@@ -493,3 +493,29 @@ footer div {
     margin-right: 8px;
 }
 
+/* impressum and privacy-policy */
+
+.back-arrow {
+    margin: 20px;
+}
+
+.back-arrow a {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.back-arrow a:hover {
+    text-decoration: underline;
+}
+
+.impressum-container,
+.datenschutz-container {
+    color: white;
+    margin: 0 20px 20px 20px;
+}
+
+.impressum-container li a {
+    color: white;
+}
+

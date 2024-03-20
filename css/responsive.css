@@ -9,8 +9,6 @@
 
 @media (max-width: 760px) {
     body {
-        padding-left: 10px;
-        padding-right: 10px;
         font-size: 14px;
     }
 
@@ -45,6 +43,8 @@
         display: flex;
         flex-wrap: unset;
         justify-content: center;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
     /* pokedex-card-small */
@@ -210,4 +210,31 @@
     .move-container {
         height: 334px;
     }
+
+    .back-arrow {
+        margin: 10px 10px 20px 10px;
+    }
+
+    .impressum-container,
+    .datenschutz-container {
+        margin: 0 10px 10px 10px;
+    }
+
+    .datenschutz-container h1 {
+        font-size: 16px;
+    }
+    
+    .datenschutz-container h2 {
+        font-size: 14px;
+    }
+    
+    .datenschutz-container h3 {
+        font-size: 12px;
+    }
+    
+    .datenschutz-container p,
+    .datenschutz-container li {
+        font-size: 10px;
+    }
+
 }
