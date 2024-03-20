@@ -39,12 +39,10 @@
 
     /* body-part */
 
-    #body-part {
-        display: flex;
-        flex-wrap: unset;
-        justify-content: center;
+    #bodyPart {
         padding-left: 10px;
         padding-right: 10px;
+        gap: 10px;
     }
 
     /* pokedex-card-small */
@@ -54,8 +52,6 @@
         width: 100px;
         padding: 10px;
         margin-bottom: 10px;
-        margin-right: 5px;
-        margin-left: 5px;
     }
 
     .name-number-container {
