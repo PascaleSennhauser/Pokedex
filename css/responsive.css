@@ -215,22 +215,4 @@
     .datenschutz-container {
         margin: 0 10px 10px 10px;
     }
-
-    .datenschutz-container h1 {
-        font-size: 16px;
-    }
-    
-    .datenschutz-container h2 {
-        font-size: 14px;
-    }
-    
-    .datenschutz-container h3 {
-        font-size: 12px;
-    }
-    
-    .datenschutz-container p,
-    .datenschutz-container li {
-        font-size: 10px;
-    }
-
 }

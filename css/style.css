@@ -515,6 +515,16 @@ footer div {
     margin: 0 20px 20px 20px;
 }
 
+.impressum-container h1,
+.datenschutz-container h1 {
+    font-size: 36px;
+}
+
+.impressum-container h2,
+.datenschutz-container h2 {
+    font-size: 24px;
+}
+
 .impressum-container li a {
     color: white;
 }
