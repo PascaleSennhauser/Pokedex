@@ -494,6 +494,13 @@ footer div {
     margin-right: 8px;
 }
 
+
+/* mobile-overlay */
+
+.mobile-overlay {
+    display: none;
+}
+
 /* impressum and privacy-policy */
 
 .back-arrow {

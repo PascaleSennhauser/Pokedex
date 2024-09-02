@@ -10,6 +10,7 @@
 /* mobile-overlay */
 
 @media (orientation: landscape) and (max-width: 1000px) {
+    
     .mobile-overlay {
         position: fixed;
         top: 0;
