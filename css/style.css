@@ -533,7 +533,23 @@ footer div {
     font-size: 24px;
 }
 
-.impressum-container li a {
+.impressum-container li a,
+.datenschutz-container li a {
+    color: white;
+}
+
+.seal {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mail-address {
+    color: white;
+}
+
+.impressum-container a:visited,
+.datenschutz-container a:visited {
     color: white;
 }
 
