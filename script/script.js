@@ -312,7 +312,6 @@ async function getEvolution(evolutionChain, i) {
 async function tryAndCatchEvolutionOne(evolutionChain, i) {
     try {
         let evolutionOne = evolutionChain['chain']['species']['name'];
-        console.log(evolutionOne);
         await getImg(evolutionOne, i);
     } catch (error) {
     }
@@ -327,7 +326,6 @@ async function tryAndCatchEvolutionOne(evolutionChain, i) {
 async function tryAndCatchEvolutionTwo(evolutionChain, i) {
     try {
         let evolutionTwo = evolutionChain['chain']['evolves_to']['0']['species']['name'];
-        console.log(evolutionTwo);
         await getImg(evolutionTwo, i);
     } catch (error) {
     }
@@ -342,7 +340,6 @@ async function tryAndCatchEvolutionTwo(evolutionChain, i) {
 async function tryAndCatchEvolutionThree(evolutionChain, i) {
     try {
         let evolutionThree = evolutionChain['chain']['evolves_to']['0']['evolves_to']['0']['species']['name'];
-        console.log(evolutionThree);
         await getImg(evolutionThree, i);
     } catch (error) {
 
